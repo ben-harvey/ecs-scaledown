@@ -7,7 +7,7 @@ async function run() {
   const cluster =
     core.getInput("cluster") || `gh-runner-${core.getInput("repository-hash")}`;
   const desiredCount = core.getInput("desired-count", { required: true });
-  core.debug(`Desired count: ${desiredCount}`);
+  core.info(`Desired count: ${desiredCount}`);
   console.log(`Desired count: ${desiredCount}`);
   try {
     if (service === "gh-runner-" && cluster === "gh-runner-") {
@@ -26,7 +26,7 @@ async function run() {
       const updateServiceResponse = await ecs
         .updateService({ service, cluster, desiredCount })
         .promise();
-      core.debug(updateServiceResponse);
+      core.info(updateServiceResponse);
       console.log(updateServiceResponse);
     } catch (error) {
       core.setFailed("Failed to update service in ECS: " + error.message);
