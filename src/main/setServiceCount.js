@@ -20,11 +20,14 @@ async function run() {
     const ecs = new aws.ECS({
       customUserAgent: "setServiceCount",
     });
-
-    const updateServiceResponse = await ecs
-      .updateService({ service, cluster, desiredCount })
-      .promise();
-    core.setOutput(updateServiceResponse);
+    try {
+      const updateServiceResponse = await ecs
+        .updateService({ service, cluster, desiredCount })
+        .promise();
+      core.setOutput(updateServiceResponse);
+    } catch (error) {
+      core.setFailed("Failed to update service in ECS: " + error.message);
+    }
   } catch (error) {
     core.setFailed(error.message);
   }
