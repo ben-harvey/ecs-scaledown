@@ -1,13 +1,11 @@
-const configAwsCreds = require('./configAwsCreds')
-const decrementServiceCount = require('./decrementServiceCount')
+const setServiceCount = require("./setServiceCount");
 
 async function run() {
-  await configAwsCreds()
-  await decrementServiceCount()
+  await setServiceCount();
 }
 
 module.exports = run;
 
 if (require.main === module) {
-    run();
+  run();
 }
