@@ -2,7 +2,11 @@
 
 A GitHub action that scales an ECS service by setting the desired task count for the service.
 
-## Prerequisites
+## Repo Tools
+
+This repo uses `pre-commit` to handle Git pre-commit hooks. Installation instructions are [here](https://pre-commit.com/#installation).
+
+## Action Prerequisites
 
 This action requires the following minimum set of IAM permissions:
 
@@ -28,7 +32,7 @@ with:
   aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 ```
 
-## Usage
+## Action Usage
 
 This action can be used to provision and de-provision self-hosted GitHub runners from the [github-actions-runner-aws](https://github.com/CMSgov/github-actions-runner-aws) repository. When provisioning, set the `desired-count` argument for the action to the number of runners your self-hosted workflow requires. You also must populate the `needs` field for any jobs on self-hosted runners and the de-provisioning job, following the example below:
 

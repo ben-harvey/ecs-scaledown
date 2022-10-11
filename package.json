@@ -24,6 +24,7 @@
     "aws-sdk": "^2.1231.0"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.34.0"
+    "@vercel/ncc": "^0.34.0",
+    "pre-commit": "^1.2.2"
   }
 }
